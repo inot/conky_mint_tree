@@ -79,8 +79,7 @@ ${alignr}${offset -6}│
 ${alignr}${offset -6}Disk Usage ─┤    
 ${alignr}${offset -6}[ $diskio_read ]  read ─┤   │    
 ${alignr}${offset -6}[ $diskio_write ] write ─┤   │    
-${alignr}${offset -6}[ ${fs_used /}/${fs_size /} ] /root ─┘   │    
-${alignr}${offset -6}[ ${fs_bar 5,120 /} ] ─┘       │    
+${lua_parse conky_mymounts}   
 ${alignr}${offset -6}│    
 ${alignr}${offset -6}Network ─┘    
 ${alignr}${offset -29}[ $nodename ] hostname ─┤    

@@ -105,3 +105,41 @@ function conky_mycpus()
     end
     return listcpus
 end
+
+function conky_mymounts()
+    local file = io.popen("df --output='source,target' 2>/dev/null")
+    local mount_list_from_df = file:read("*a")
+    file:close()
+
+    mount_list_array = Split(mount_list_from_df, "\n")
+    mount_points = {}
+
+    for num, inter in pairs(mount_list_array) do
+        if (inter == "" or inter == "Operation not permitted" or string.find(inter, "tempfs")) then
+            table.remove(mount_list_array, num)
+        else
+            if (string.find(mount_list_array[num], "/dev/") or string.find(mount_list_array[num], ":/")) then
+                str = string.gsub(mount_list_array[num], "%s+", " ")
+                mount_point_with_dev = Split(str, " ")
+                table.insert(mount_points, mount_point_with_dev[2])
+            end
+        end
+    end
+
+    result = ""
+
+    for i = 1, #mount_points do
+        if (i ~= #mount_points) then
+            result = result .. "${alignr}${offset -30}[ ${fs_used " .. mount_points[i] .. "}/${fs_size " ..
+                         mount_points[i] .. "} ] " .. mount_points[i] .. " ─┤   │\n"
+            result = result .. "${alignr}${offset -30}[ ${fs_bar 5,120 " .. mount_points[i] ..
+                         "} ] ─┘   │   │\n"
+        else
+            result = result .. "${alignr}${offset -30}[ ${fs_used " .. mount_points[i] .. "}/${fs_size " ..
+                         mount_points[i] .. "} ] " .. mount_points[i] .. " ─┘   │\n"
+            result = result .. "${alignr}${offset -12}[ ${fs_bar 5,120 " .. mount_points[i] .. "} ] ─┘       │"
+        end
+
+    end
+    return result
+end
