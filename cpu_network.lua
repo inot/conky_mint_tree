@@ -29,58 +29,56 @@ function conky_mynetwork()
             table.remove(interfaces_a, num)
         end
     end
-    offset_int = 56
+    offset_int = 53
     result = ""
     if (#interfaces_a > 0) then
         if (#interfaces_a > 1) then
             for i = 1, #interfaces_a do
                 if (check_network_connected(routes_text, interfaces_a[i])) then
                     if (i ~= #interfaces_a) then
-                        result = result .. "${alignr}${offset -" .. offset_int ..
-                                     "}                                                           │\n"
+                        result = result .. "${alignr}${offset -" .. offset_int .. "}│\n"
                         result = result .. "${alignr}${offset -" .. offset_int .. "}[ ${addr " .. interfaces_a[i] ..
                                      "} ] " .. interfaces_a[i] .. " ─┤\n"
                         result =
                             result .. "${alignr}${offset -" .. offset_int .. "}[ ${downspeed " .. interfaces_a[i] ..
-                                "} k/s ] download ─┤    │\n"
+                                "} k/s ] download ─┤   │\n"
                         result = result .. "${alignr}${offset -" .. offset_int .. "}[ ${downspeedgraph " ..
-                                     interfaces_a[i] .. " 12,120 136311 11B014} ] ─┘    │    │\n"
+                                     interfaces_a[i] .. " 12,120 136311 11B014} ] ─┘    │   │\n"
                         result = result .. "${alignr}${offset -" .. offset_int .. "}[ ${upspeed " .. interfaces_a[i] ..
-                                     "} k/s ]   upload ─┘    │\n"
+                                     "} k/s ]   upload ─┘   │\n"
                         result = result .. "${alignr}${offset -" .. offset_int .. "}[ ${upspeedgraph " ..
-                                     interfaces_a[i] .. " 12,120 BA0B0B FC0707} ] ─┘         │\n"
+                                     interfaces_a[i] .. " 12,120 BA0B0B FC0707} ] ─┘        │\n"
 
                     else
-                        result = result .. "${alignr}${offset -" .. offset_int ..
-                                     "}                                                           │\n"
+                        result = result .. "${alignr}${offset -" .. offset_int .. "}│\n"
                         result = result .. "${alignr}${offset -" .. offset_int .. "}[ ${addr " .. interfaces_a[i] ..
                                      "} ] " .. interfaces_a[i] .. " ─┘\n"
                         result =
                             result .. "${alignr}${offset -" .. offset_int .. "}[ ${downspeed " .. interfaces_a[i] ..
-                                "} k/s ] download ─┤     \n"
+                                "} k/s ] download ─┤    \n"
                         result = result .. "${alignr}${offset -" .. offset_int .. "}[ ${downspeedgraph " ..
-                                     interfaces_a[i] .. " 12,120 136311 11B014} ] ─┘    │     \n"
+                                     interfaces_a[i] .. " 12,120 136311 11B014} ] ─┘   │    \n"
                         result = result .. "${alignr}${offset -" .. offset_int .. "}[ ${upspeed " .. interfaces_a[i] ..
-                                     "} k/s ]   upload ─┘     \n"
+                                     "} k/s ]   upload ─┘    \n"
                         result = result .. "${alignr}${offset -" .. offset_int .. "}[ ${upspeedgraph " ..
-                                     interfaces_a[i] .. " 12,120 BA0B0B FC0707} ] ─┘          \n"
+                                     interfaces_a[i] .. " 12,120 BA0B0B FC0707} ] ─┘        \n"
                     end
                 end
             end
         else
             if (check_network_connected(routes_text, interfaces_a[1])) then
-                result = result .. "${alignr}${offset -" .. offset_int ..
-                             "}                                                           │\n"
+
+                result = result .. "${alignr}${offset -" .. offset_int .. "}│\n"
                 result = result .. "${alignr}${offset -" .. offset_int .. "}[ ${addr " .. interfaces_a[1] .. "} ] " ..
                              interfaces_a[1] .. " ─┘\n"
                 result = result .. "${alignr}${offset -" .. offset_int .. "}[ ${downspeed " .. interfaces_a[1] ..
-                             "} k/s ] download ─┤     \n"
+                             "} k/s ] download ─┤    \n"
                 result = result .. "${alignr}${offset -" .. offset_int .. "}[ ${downspeedgraph " .. interfaces_a[1] ..
-                             " 12,120 136311 11B014} ] ─┘    │     \n"
+                             " 12,120 136311 11B014} ] ─┘    │    \n"
                 result = result .. "${alignr}${offset -" .. offset_int .. "}[ ${upspeed " .. interfaces_a[1] ..
-                             "} k/s ]   upload ─┘     \n"
+                             "} k/s ]   upload ─┘    \n"
                 result = result .. "${alignr}${offset -" .. offset_int .. "}[ ${upspeedgraph " .. interfaces_a[1] ..
-                             " 12,120 BA0B0B FC0707} ] ─┘          \n"
+                             " 12,120 BA0B0B FC0707} ] ─┘         \n"
             else
                 result = "${alignr}${offset -" .. offset_int .. "} No Network Available ─┘"
             end
