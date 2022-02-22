@@ -1,5 +1,5 @@
 conky.config = { 
-
+	lua_load = '~/conky/conky_mint_tree/cpu_network.lua',
 	background = true,
 	use_xft = true,
 	font = 'monospace:size=8',
@@ -56,10 +56,7 @@ ${alignr}${offset -6}system ─┤
 ${alignr}${offset -6}[${execi 1000 cat /proc/cpuinfo|grep 'model name'|sed -e 's/model name.*: //'| uniq | cut -c 1-39}] CPU ─┤   │
 ${alignr}${offset -6}│   │   │
 ${alignr}${offset -6}usage ─┤   │   │
-${alignr}${offset -6}[ ${cpu cpu 1}% ] cpu1 ─┤   │   │   │
-${alignr}${offset -6}[ ${cpu cpu 2}% ] cpu2 ─┤   │   │   │
-${alignr}${offset -6}[ ${cpu cpu 3}% ] cpu3 ─┤   │   │   │
-${alignr}${offset -6}[ ${cpu cpu 4}% ] cpu4 ─┘   │   │   │
+${lua_parse conky_mycpus}
 ${alignr}${offset -6}│   │   │
 ${alignr}${offset -6}[ $loadavg ] load ─┤   │   │
 ${alignr}${offset -6}[ ${top name 1} ${top cpu 1} ] ─┤   │   │   │
@@ -84,19 +81,9 @@ ${alignr}${offset -6}[ $diskio_read ]  read ─┤       │
 ${alignr}${offset -6}[ $diskio_write ] write ─┤       │
 ${alignr}${offset -6}[ ${fs_used /}/${fs_size /} ] /root ─┘       │
 ${alignr}${offset -6}[ ${fs_bar 5,120 /} ] ─┘             │
+${alignr}${offset -6}│
 ${alignr}${offset -6}Network ─┘
 ${alignr}${offset -32}[ $nodename ] hostname ─┤
 ${alignr}${offset -32}[ ${execi 60 wget -qO- ifconfig.co} ] Wan ─┤
-${alignr}${offset -32}                                                             │
-${alignr}${offset -32}[ ${addr wlp0s20f3} ] WiFi ─┤
-${alignr}${offset -32}[ ${downspeed wlp0s20f3} k/s ] download ─┤
-${alignr}${offset -32}[ ${downspeedgraph wlp0s20f3 12,120 136311 11B014} ] ─┘    │
-${alignr}${offset -32}[ ${upspeed wlp0s20f3} k/s ]   upload ─┤
-${alignr}${offset -32}[ ${upspeedgraph wlp0s20f3 12,120 BA0B0B FC0707} ] ─┘    │
-${alignr}${offset -32}                                                           │
-${alignr}${offset -32}[ ${addr enp43s0} ] Ethernet ─┤
-${alignr}${offset -32}[ ${downspeed enp43s0} k/s ] download ─┤
-${alignr}${offset -32}[ ${downspeedgraph enp43s0 12,120 136311 11B014} ] ─┘    │
-${alignr}${offset -32}[ ${upspeed enp43s0} k/s ]   upload ─┘
-${alignr}${offset -62}[ ${upspeedgraph enp43s0 12,120 BA0B0B FC0707} ] ─┘
+${lua_parse conky_mynetwork}
 ]];
