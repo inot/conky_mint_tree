@@ -27,6 +27,7 @@ conky.config = {
 	alignment = 'top_right',
 	gap_x = 10,
 	gap_y = 50,
+	update_interval_on_battery = 5,
 
 -- Misc Console #
    out_to_console = false,
@@ -50,7 +51,11 @@ ${alignc}${offset 86}${font xftfont montserrat:size=10} Mint Cinnamon ${font}
 ${alignr}${offset -6}└──────────┐
 ${alignr}${offset -6}${exec cat /etc/issue.net} ${machine} ─┤
 ${alignr}${offset -6}[ ${kernel} ] Kernel ─┤   │
-${alignr}${offset -6}[ ${uptime} ] Uptime ─┘   │
+${alignr}${offset -6}[ ${uptime} ] Uptime ${if_existing /sys/class/power_supply/BAT1/capacity}─┤${else}─┘${endif}   │
+${if_existing /sys/class/power_supply/BAT1/capacity}\
+${alignr}${offset 0}${if_match ${battery_percent BAT1} <= 10 }${alignc}${color red}${blink Plug In Charger!!!}${endif}${color} ${battery_time BAT1} ${battery BAT1} Battery ─┘   │ 
+${alignr}${offset -6}[ ${if_match ${battery_percent BAT1} >= 15 }${color green}${battery_bar 5,120 BAT1}${color}${endif}${if_match ${battery_percent BAT1} < 15 }${color red}${battery_bar 5,120 BAT1}${color}${endif} ] ─┘       │
+${endif}\
 ${alignr}${offset -6}│
 ${alignr}${offset -6}system ─┘
 ${alignr}${offset -6}[${execi 1000 cat /proc/cpuinfo|grep 'model name'|sed -e 's/model name.*: //'| uniq | cut -c 1-39}] CPU ─┤    
