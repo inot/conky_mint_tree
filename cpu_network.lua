@@ -108,16 +108,15 @@ end
 
 function conky_mymounts()
     local file = io.popen("df --output='source,target' 2>/dev/null")
-    local mount_list_from_df = file:read("*a")
+    local mount_list_from_df = file:read("*all")
     file:close()
 
     mount_list_array = Split(mount_list_from_df, "\n")
+
     mount_points = {}
 
     for num, inter in pairs(mount_list_array) do
-        if (inter == "" or inter == "Operation not permitted" or string.find(inter, "tempfs")) then
-            table.remove(mount_list_array, num)
-        else
+        if (inter ~= "" and inter ~= "Operation not permitted" and not string.find(inter, "tmpfs")) then
             if (string.find(mount_list_array[num], "/dev/") or string.find(mount_list_array[num], ":/")) then
                 str = string.gsub(mount_list_array[num], "%s+", " ")
                 mount_point_with_dev = Split(str, " ")
