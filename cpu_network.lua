@@ -22,11 +22,11 @@ function conky_mynetwork()
     local routes_text = file:read("*a")
     file:close()
 
-    interfaces_a = Split(interfaces, "\n")
+    interfaces_a = {}
 
-    for num, inter in pairs(interfaces_a) do
-        if (inter == "" or inter == "lo") then
-            table.remove(interfaces_a, num)
+    for num, inter in pairs(Split(interfaces, "\n")) do
+        if (inter ~= "" and inter ~= "lo" and not string.find(inter, "vmnet")) then
+            table.insert(interfaces_a, inter)
         end
     end
     offset_int = 53
@@ -116,7 +116,8 @@ function conky_mymounts()
     mount_points = {}
 
     for num, inter in pairs(mount_list_array) do
-        if (inter ~= "" and inter ~= "Operation not permitted" and not string.find(inter, "tmpfs")) then
+        if (inter ~= "" and inter ~= "Operation not permitted" and not string.find(inter, "tmpfs") and
+            not string.find(inter, "boot") and not string.find(inter, "snap")) then
             if (string.find(mount_list_array[num], "/dev/") or string.find(mount_list_array[num], ":/")) then
                 str = string.gsub(mount_list_array[num], "%s+", " ")
                 mount_point_with_dev = Split(str, " ")

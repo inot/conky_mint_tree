@@ -58,7 +58,7 @@ ${alignr}${offset -6}[ ${if_match ${battery_percent BAT1} >= 15 }${color green}$
 ${endif}\
 ${alignr}${offset -6}│
 ${alignr}${offset -6}system ─┘
-${alignr}${offset -6}[${execi 1000 cat /proc/cpuinfo|grep 'model name'|sed -e 's/model name.*: //'| uniq | cut -c 1-39}] CPU ─┤    
+${alignr}${offset -6}[ ${execi 1000 cat /proc/cpuinfo|grep 'model name'|sed -e 's/model name.*: //'| uniq | cut -c 1-39}] CPU ─┤    
 ${alignr}${offset -6}│   │    
 ${alignr}${offset -6}usage ─┤   │    
 ${lua_parse conky_mycpus}
