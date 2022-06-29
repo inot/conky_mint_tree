@@ -96,10 +96,14 @@ function conky_mycpus()
     listcpus = ""
     for i = 1, numcpus do
         if (i == numcpus) then
-            listcpus = listcpus .. "${alignr}${offset -6}[ ${cpu cpu" .. tostring(i) .. "}% ] cpu" .. tostring(i) ..
+	    spaces = string.rep(" ", 3 - math.ceil(i/9))
+	    string1 = spaces .. "cpu"
+            listcpus = listcpus .. "${alignr}${offset -6}[ ${cpu cpu" .. tostring(i) .. "}% ]".. string1 .. tostring(i) ..
                            " ─┘   │   │    "
         else
-            listcpus = listcpus .. "${alignr}${offset -6}[ ${cpu cpu" .. tostring(i) .. "}% ] cpu" .. tostring(i) ..
+            spaces = string.rep(" ", 3 - math.ceil(i/9))
+            string1 = spaces .. "cpu"
+            listcpus = listcpus .. "${alignr}${offset -6}[ ${cpu cpu" .. tostring(i) .. "}% ]".. string1 .. tostring(i) ..
                            " ─┤   │   │    \n"
         end
     end

@@ -1,5 +1,5 @@
 conky.config = { 
-	lua_load = '~/conky/conky_mint_tree/cpu_network.lua',
+	lua_load = '~/.config/conky/cpu_network.lua',
 	background = true,
 	use_xft = true,
 	font = 'monospace:size=8',
