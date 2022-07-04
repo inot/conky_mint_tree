@@ -8,9 +8,8 @@
 
 # Установка 
 ```bash
-mkdir ~/conky
-cd ~/conky
 git clone https://github.com/inot/conky_mint_tree.git
-/usr/bin/conky -c /home/inot/conky/conky_mint_tree/.conkyrc
+mv conky_mint_tree ~/.config/conky
+/usr/bin/conky -c ~/.config/conky/.conkyrc
 ```
 
