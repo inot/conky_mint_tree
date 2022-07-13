@@ -29,7 +29,7 @@ function conky_mynetwork()
             table.insert(interfaces_a, inter)
         end
     end
-    offset_int = 57
+    offset_int = 53
     result = ""
     if (#interfaces_a > 0) then
         if (#interfaces_a > 1) then
@@ -43,11 +43,11 @@ function conky_mynetwork()
                             result .. "${alignr}${offset -" .. offset_int .. "}[ ${downspeed " .. interfaces_a[i] ..
                                 "} k/s ] download ─┤   │\n"
                         result = result .. "${alignr}${offset -" .. offset_int .. "}[ ${downspeedgraph " ..
-                                     interfaces_a[i] .. " 12,112 136311 11B014} ] ─┘    │   │\n"
+                                     interfaces_a[i] .. " 12,96 136311 11B014} ] ─┘    │   │\n"
                         result = result .. "${alignr}${offset -" .. offset_int .. "}[ ${upspeed " .. interfaces_a[i] ..
                                      "} k/s ]   upload ─┘   │\n"
                         result = result .. "${alignr}${offset -" .. offset_int .. "}[ ${upspeedgraph " ..
-                                     interfaces_a[i] .. " 12,112 BA0B0B FC0707} ] ─┘        │\n"
+                                     interfaces_a[i] .. " 12,96 BA0B0B FC0707} ] ─┘        │\n"
 
                     else
                         result = result .. "${alignr}${offset -" .. offset_int .. "}│\n"
@@ -57,11 +57,11 @@ function conky_mynetwork()
                             result .. "${alignr}${offset -" .. offset_int .. "}[ ${downspeed " .. interfaces_a[i] ..
                                 "} k/s ] download ─┤    \n"
                         result = result .. "${alignr}${offset -" .. offset_int .. "}[ ${downspeedgraph " ..
-                                     interfaces_a[i] .. " 12,112 136311 11B014} ] ─┘   │    \n"
+                                     interfaces_a[i] .. " 12,102 136311 11B014} ] ─┘   │    \n"
                         result = result .. "${alignr}${offset -" .. offset_int .. "}[ ${upspeed " .. interfaces_a[i] ..
                                      "} k/s ]   upload ─┘    \n"
                         result = result .. "${alignr}${offset -" .. offset_int .. "}[ ${upspeedgraph " ..
-                                     interfaces_a[i] .. " 12,112 BA0B0B FC0707} ] ─┘        \n"
+                                     interfaces_a[i] .. " 12,102 BA0B0B FC0707} ] ─┘        \n"
                     end
                 end
             end
@@ -74,11 +74,11 @@ function conky_mynetwork()
                 result = result .. "${alignr}${offset -" .. offset_int .. "}[ ${downspeed " .. interfaces_a[1] ..
                              "} k/s ] download ─┤    \n"
                 result = result .. "${alignr}${offset -" .. offset_int .. "}[ ${downspeedgraph " .. interfaces_a[1] ..
-                             " 12,112 136311 11B014} ] ─┘    │    \n"
+                             " 12,96 136311 11B014} ] ─┘    │    \n"
                 result = result .. "${alignr}${offset -" .. offset_int .. "}[ ${upspeed " .. interfaces_a[1] ..
                              "} k/s ]   upload ─┘    \n"
                 result = result .. "${alignr}${offset -" .. offset_int .. "}[ ${upspeedgraph " .. interfaces_a[1] ..
-                             " 12,112 BA0B0B FC0707} ] ─┘         \n"
+                             " 12,96 BA0B0B FC0707} ] ─┘         \n"
             else
                 result = "${alignr}${offset -" .. offset_int .. "} No Network Available ─┘"
             end
@@ -134,14 +134,14 @@ function conky_mymounts()
 
     for i = 1, #mount_points do
         if (i ~= #mount_points) then
-            result = result .. "${alignr}${offset -34}" .. mount_points[i] .. " [ ${fs_used " .. mount_points[i] .. "}/${fs_size " ..
+            result = result .. "${alignr}${offset -30}" .. mount_points[i] .. " [ ${fs_used " .. mount_points[i] .. "}/${fs_size " ..
                          mount_points[i] .. "} ] ─┤   │\n"
-            result = result .. "${alignr}${offset -34}[ ${fs_bar 5,120 " .. mount_points[i] ..
+            result = result .. "${alignr}${offset -30}[ ${fs_bar 5,120 " .. mount_points[i] ..
                          "} ] ─┘   │   │\n"
         else
-            result = result .. "${alignr}${offset -34}" .. mount_points[i] .. " [ ${fs_used " .. mount_points[i] .. "}/${fs_size " ..
+            result = result .. "${alignr}${offset -30}" .. mount_points[i] .. " [ ${fs_used " .. mount_points[i] .. "}/${fs_size " ..
                          mount_points[i] .. "} ] ─┘   │\n"
-            result = result .. "${alignr}${offset -13}[ ${fs_bar 5,120 " .. mount_points[i] .. "} ] ─┘       │"
+            result = result .. "${alignr}${offset -12}[ ${fs_bar 5,120 " .. mount_points[i] .. "} ] ─┘       │"
         end
 
     end
