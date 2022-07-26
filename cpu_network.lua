@@ -57,11 +57,11 @@ function conky_mynetwork()
                             result .. "${alignr}${offset -" .. offset_int .. "}[ ${downspeed " .. interfaces_a[i] ..
                                 "} k/s ] download ─┤    \n"
                         result = result .. "${alignr}${offset -" .. offset_int .. "}[ ${downspeedgraph " ..
-                                     interfaces_a[i] .. " 12,102 136311 11B014} ] ─┘   │    \n"
+                                     interfaces_a[i] .. " 12,96 136311 11B014} ] ─┘    │    \n"
                         result = result .. "${alignr}${offset -" .. offset_int .. "}[ ${upspeed " .. interfaces_a[i] ..
                                      "} k/s ]   upload ─┘    \n"
                         result = result .. "${alignr}${offset -" .. offset_int .. "}[ ${upspeedgraph " ..
-                                     interfaces_a[i] .. " 12,102 BA0B0B FC0707} ] ─┘        \n"
+                                     interfaces_a[i] .. " 12,96 BA0B0B FC0707} ] ─┘         \n"
                     end
                 end
             end

@@ -75,11 +75,11 @@ ${alignr}${offset -6}[ ${execi 5 sensors|grep 'Package id 0:'| awk -F'+' '{print
 ${alignr}${offset -6}│    
 ${alignr}${offset -6}[ $mem/$memmax ] Memory ─┤    
 ${alignr}${offset -6}[ $memperc% ] used ─┘   │    
-${alignr}${offset -6}[ ${top name 1} ${top mem 1}% ] ──┤       │    
-${alignr}${offset -6}[ ${top name 2} ${top mem 2}% ] ──┤       │    
-${alignr}${offset -6}[ ${top name 3} ${top mem 3}% ] ──┤       │    
-${alignr}${offset -6}[ ${top name 4} ${top mem 4}% ] ──┤       │    
-${alignr}${offset -6}[ ${top name 5} ${top mem 5}% ] ──┘       │    
+${alignr}${offset -6}[ ${top name 1}${top mem 1}% ] ─┤       │    
+${alignr}${offset -6}[ ${top name 2}${top mem 2}% ] ─┤       │    
+${alignr}${offset -6}[ ${top name 3}${top mem 3}% ] ─┤       │    
+${alignr}${offset -6}[ ${top name 4}${top mem 4}% ] ─┤       │    
+${alignr}${offset -6}[ ${top name 5}${top mem 5}% ] ─┘       │    
 ${alignr}${offset -6}│    
 ${alignr}${offset -6}Disk Usage ─┤    
 ${alignr}${offset -6}[ $diskio_read ]  read ─┤   │    
