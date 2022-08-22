@@ -72,6 +72,7 @@ ${alignr}${offset -6}[ ${top name 5} ${top cpu 5} ] ─┘   │   │
 ${alignr}${offset -6}│   │    
 ${alignr}${offset -6}Temperature ─┘   │    
 ${alignr}${offset -6}[ ${execi 5 sensors|grep 'Package id 0:'| awk -F'+' '{print $2}' | awk -F'.' '{print $1}'} °C ] cpu ─┘       │    
+${if_existing /usr/bin/nvidia-settings}${alignr}${offset -6}[ ${execi 5 nvidia-settings -t -q [gpu]/GPUCoreTemp} °C ] gpu ─┘       │    ${else}${alignr}${offset -6}│    ${endif}
 ${alignr}${offset -6}│    
 ${alignr}${offset -6}[ $mem/$memmax ] Memory ─┤    
 ${alignr}${offset -6}[ $memperc% ] used ─┘   │    
